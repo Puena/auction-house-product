@@ -1,4 +1,4 @@
-package repositories
+package postgres
 
 import (
 	"context"
@@ -16,6 +16,7 @@ type productRepository struct {
 	db *sql.DB
 }
 
+// NewProductRepository create a new product repository.
 func NewProductRepository(db *sql.DB) *productRepository {
 	return &productRepository{db: db}
 }
@@ -40,7 +41,7 @@ func (p *productRepository) CreateProduct(ctx context.Context, product domain.Pr
 	return createdProduct, nil
 }
 
-// UpdateProduct update a product.
+// UpdateProduct update a product, at least one field of toUpdate argument required.
 func (p *productRepository) UpdateProduct(ctx context.Context, productID string, toUpdate domain.UpdateProduct) (domain.Product, error) {
 	queryBuilder := strings.Builder{}
 	queryBuilder.WriteString("UPDATE products SET ")
@@ -71,9 +72,12 @@ func (p *productRepository) UpdateProduct(ctx context.Context, productID string,
 
 	queryValues = append(queryValues, productID)
 	queryBuilder.WriteString(fmt.Sprintf(" WHERE id = $%d RETURNING id, name, description, media, created_at, created_by", countValues()))
+	query := queryBuilder.String()
 
 	logger.Info().Str("productID", productID).Str("update_data", fmt.Sprintf("%+v", toUpdate)).Msg("update products")
-	row := p.db.QueryRowContext(ctx, queryBuilder.String(), queryValues...)
+	logger.Info().Str("query", query).Msg("update products")
+
+	row := p.db.QueryRowContext(ctx, query, queryValues...)
 	if row.Err() != nil {
 		return domain.Product{}, row.Err()
 	}
@@ -130,7 +134,7 @@ func (p *productRepository) FindAll(ctx context.Context) (products []domain.Prod
 	// TODO: specify default limit
 	const query = "SELECT id, name, description, media, created_at, created_by FROM products"
 
-	logger.Info().Msg("select from products")
+	logger.Info().Msg("select all from products")
 
 	var rows *sql.Rows
 	rows, err = p.db.QueryContext(ctx, query)
