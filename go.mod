@@ -1,6 +1,6 @@
 module github.com/Puena/auction-house-product
 
-go 1.21.4
+go 1.21.5
 
 require (
 	github.com/Puena/auction-house-logger v0.2.4
@@ -9,6 +9,7 @@ require (
 )
 
 require (
+	github.com/Puena/auction-house-message-broker v0.0.1 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect
 	github.com/jackc/puddle/v2 v2.2.1 // indirect

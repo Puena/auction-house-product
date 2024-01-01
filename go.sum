@@ -10,6 +10,10 @@ github.com/Nvveen/Gotty v0.0.0-20120604004816-cd527374f1e5 h1:TngWCqHvy9oXAN6lEV
 github.com/Nvveen/Gotty v0.0.0-20120604004816-cd527374f1e5/go.mod h1:lmUJ/7eu/Q8D7ML55dXQrVaamCz2vxCfdQBasLZfHKk=
 github.com/Puena/auction-house-logger v0.2.4 h1:LDQ0D683eiJW8M9BJO1wGASvvAgmXvHGykH69om/0+U=
 github.com/Puena/auction-house-logger v0.2.4/go.mod h1:6JV7Wdrf0qQOl8rr2d5qTfrsVxy9ioxWVL4mq5AGg0c=
+github.com/Puena/auction-house-message-broker v0.0.0-20240101101850-43760a5c6b3a h1:1BMwGygnl0Lqc3FeF18uSFDbyNqI4S7N1lOjWPFUKl0=
+github.com/Puena/auction-house-message-broker v0.0.0-20240101101850-43760a5c6b3a/go.mod h1:R0HR+cMk47I+WqrBcnVBe43Yr+NzYRA8UL0vtYggoUU=
+github.com/Puena/auction-house-message-broker v0.0.1 h1:qBO9zPtCB5UYBaLdspAXEOmwRs42saiv7foEv/ldkVI=
+github.com/Puena/auction-house-message-broker v0.0.1/go.mod h1:JeeTXG4nOurg3vvpvPRu4XCcPMH6lt3LilAgSCB8hIo=
 github.com/andybalholm/brotli v1.0.6 h1:Yf9fFpf49Zrxb9NlQaluyE92/+X7UVHlhMNJN2sxfOI=
 github.com/andybalholm/brotli v1.0.6/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=
 github.com/cenkalti/backoff/v4 v4.2.1 h1:y4OZtCnogmCPw98Zjyt5a6+QwPLGkiQsYW5oUqylYbM=
