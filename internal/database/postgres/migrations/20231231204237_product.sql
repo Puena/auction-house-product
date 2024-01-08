@@ -5,8 +5,9 @@ CREATE TABLE IF NOT EXISTS products (
     name text NOT NULL,
     description text NOT NULL,
     media text[] NOT NULL,
-    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
     created_by text not null,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE,
     UNIQUE (created_by, name)
 );
 -- +goose StatementEnd

@@ -9,13 +9,15 @@ import (
 // PublishEventsRepository represent publish events repository.
 type PublishEventsRepository interface {
 	// Publish event product created.
-	ProductCreated(ctx context.Context, event domain.EventProductCreated) error
+	ProductCreated(ctx context.Context, userID string, event domain.EventProductCreated) error
 	// Publish event product updated.
-	ProductUpdated(ctx context.Context, event domain.EventProductUpdated) error
+	ProductUpdated(ctx context.Context, userID string, event domain.EventProductUpdated) error
 	// Publish event product deleted.
-	ProductDeleted(ctx context.Context, event domain.EventProductDeleted) error
+	ProductDeleted(ctx context.Context, userID string, event domain.EventProductDeleted) error
 	// Publish event product found.
-	ProductFound(ctx context.Context, event domain.EventProductFound) error
+	ProductFound(ctx context.Context, userID string, event domain.EventProductFound) error
 	// Publish event products found.
-	ProductsFound(ctx context.Context, event domain.EventProductsFound) error
+	ProductsFound(ctx context.Context, userID string, event domain.EventProductsFound) error
+	// ProductError publish product error.
+	ProductError(ctx context.Context, userID string, event domain.EventProductError) error
 }

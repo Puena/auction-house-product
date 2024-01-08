@@ -14,9 +14,9 @@ type ProductRepository interface {
 	// CreateProduct create a new product.
 	CreateProduct(ctx context.Context, product domain.Product) (domain.Product, error)
 	// UpdateProduct update a product.
-	UpdateProduct(ctx context.Context, productID string, toUpdate domain.UpdateProduct) (domain.Product, error)
+	UpdateProduct(ctx context.Context, productID string, userID string, toUpdate domain.UpdateProduct) (domain.Product, error)
 	// DeleteProduct delete a product.
-	DeleteProduct(ctx context.Context, productID string) (domain.Product, error)
+	DeleteProduct(ctx context.Context, productID string, userID string) (domain.Product, error)
 	// FindOne find a product by id.
 	FindOne(ctx context.Context, productID string) (domain.Product, error)
 	// FindAll find all products.

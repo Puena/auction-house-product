@@ -1,0 +1,23 @@
+@startuml
+participant "Product service" as ps
+queue "Stream name:\nPRODUCT\nqueue" as pq
+queue "Stream name:\nERROR\ntopic" as eq
+
+group listen
+pq -> ps: subject: product.command.create_product\nproto: CommandCreateProduct\nheaders: { "Auth-User-Id", "NATS-Msg-Id", "Msg-Occured-At" }"}
+pq -> ps: subject: product.command.update_product\nproto: CommandUpdateProduct\nheaders: { "Auth-User-Id", "NATS-Msg-Id", "Msg-Occured-At" }"}
+pq -> ps: subject: product.command.delete_product\nproto: CommandDeleteProduct\nheaders: { "Auth-User-Id", "NATS-Msg-Id", "Msg-Occured-At" }"}
+pq -> ps: subject: product.query.find_product\nproto: QueryFindProduct\nheaders: { "Auth-User-Id", "NATS-Msg-Id", "Msg-Occured-At" }"}
+pq -> ps: subject: product.query.find_products\nproto: QueryFindProducts\nheaders: { "Auth-User-Id", "NATS-Msg-Id", "Msg-Occured-At" }"}
+end
+
+group publish
+ps -> pq: subject: product.event.product_created\nproto: EventProductCreated\nheaders: { "Auth-User-Id", "NATS-Msg-Id", "Msg-Occured-At" }"}
+ps -> pq: subject: product.event.product_updated\nproto: EventProductUpdated\nheaders: { "Auth-User-Id", "NATS-Msg-Id", "Msg-Occured-At" }"}
+ps -> pq: subject: product.event.product_deleted\nproto: EventProductDeleted\nheaders: { "Auth-User-Id", "NATS-Msg-Id", "Msg-Occured-At" }"}
+ps -> pq: subject: product.event.product_found\nproto: EventProductsFound\nheaders: { "Auth-User-Id", "NATS-Msg-Id", "Msg-Occured-At" }"}
+ps -> pq: subject: product.event.products_found\nproto: EventProductsFound\nheaders: { "Auth-User-Id", "NATS-Msg-Id", "Msg-Occured-At" }"}
+ps -> eq: subject: error.product\nproto: EventErrorOccurred\nheaders: { "Auth-User-Id", "NATS-Msg-Id", "Msg-Occured-At" }"}
+end
+
+@enduml
